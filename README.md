@@ -1,4 +1,4 @@
-# Elegance Blog
+# Blog
 
 A sophisticated full-stack blogging platform designed for seamless content creation and management. This project features a robust role-based access control system, allowing users to share their stories while providing administrators with powerful moderation tools.
 
