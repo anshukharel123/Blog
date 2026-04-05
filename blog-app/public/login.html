@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+<img src="logo.png" style="height:35px; width:auto; object-fit:contain;" />
+    <div>
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <h1>Welcome Back</h1>
+    <div class="card">
+      <div class="message" id="message"></div>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+      <p style="text-align:center; margin-top:15px;">
+        Don't have an account? <a href="register.html">Register</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('message');
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          // Save token and role to localStorage
+          localStorage.setItem('token', data.token);
+
+          message.className = 'message success';
+          message.style.display = 'block';
+          message.textContent = 'Login successful! Redirecting...';
+          setTimeout(() => window.location.href = 'dashboard.html', 1500);
+        } else {
+          message.className = 'message error';
+          message.style.display = 'block';
+          message.textContent = data.message || 'Login failed';
+        }
+      } catch (err) {
+        message.className = 'message error';
+        message.style.display = 'block';
+        message.textContent = 'Something went wrong!';
+      }
+    });
+  </script>
+
+</body>
+</html>

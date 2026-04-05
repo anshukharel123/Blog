@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+<img src="logo.png" style="height:35px; width:auto; object-fit:contain;" />
+    <div>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <h1>Create Account</h1>
+    <div class="card">
+      <div class="message" id="message"></div>
+      <form id="registerForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button class="btn btn-primary" type="submit">Register</button>
+      </form>
+      <p style="text-align:center; margin-top:15px;">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('message');
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          message.className = 'message success';
+          message.style.display = 'block';
+          message.textContent = 'Registered successfully! Redirecting to login...';
+          setTimeout(() => window.location.href = 'login.html', 1500);
+        } else {
+          message.className = 'message error';
+          message.style.display = 'block';
+          message.textContent = data.message || 'Registration failed';
+        }
+      } catch (err) {
+        message.className = 'message error';
+        message.style.display = 'block';
+        message.textContent = 'Something went wrong!';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -59,11 +59,11 @@ router.post('/login', async (req, res) => {
     }
 
     // Create token
-    const token = jwt.sign(
-      { id: user.rows[0].id, role: user.rows[0].role_name },
-      process.env.JWT_SECRET,
-      { expiresIn: '1d' }
-    );
+   const token = jwt.sign(
+  { id: user.rows[0].id, role: user.rows[0].role_name, username: user.rows[0].username },
+  process.env.JWT_SECRET,
+  { expiresIn: '1d' }
+);
 
     res.json({ message: 'Login successful', token });
   } catch (err) {

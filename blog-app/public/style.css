@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+* {
+    margin :0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Playfair Display', serif;
+}
+
+nav {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f5a623;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+nav a {
+  color: #f5a623;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+nav a:hover {
+  color: white;
+}
+
+nav .logo {
+  color: #f5a623;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #3498db;
+}
+
+nav .logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-left: 4px solid #f5a623;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  font-size: 22px;
+  font-family: 'Playfair Display', serif;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.card .meta {
+  font-size: 13px;
+  color: #999;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  font-style: italic;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+form textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+form button {
+  width: 100%;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.auth-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background-color: #23cc71;
+  color: white;
+  margin-left: 10px;
+}
+
+.badge.admin {
+  background-color: #e74c3c;
+}
